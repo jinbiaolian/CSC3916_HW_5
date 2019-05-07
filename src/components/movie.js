@@ -16,19 +16,23 @@ class Movie extends Component {
     }
 
     render() {
-        const ActorInfo = ({actors}) => {
-            return actors.map((actor, i) =>
+        const ActorInfo = ({Actors}) => {
+            return Actors.map((actor, i) =>
                 <p key={i}>
-                    <b>{actor.actorName}</b> {actor.characterName}
+                    <b>{actor.FirstActorname}</b> {actor.FirstCharacterName}
+                    <p></p>
+                    <b>{actor.SecondActorname}</b> {actor.SecondCharacterName}
+                    <p></p>
+                    <b>{actor.ThirdActorname}</b> {actor.ThirdCharacterName}
                 </p>
             );
         };
 
-        const ReviewInfo = ({reviews}) => {
-            return reviews.map((review, i) =>
+        const ReviewInfo = ({Reviews}) => {
+            return Reviews.map((review, i) =>
                 <p key={i}>
-                <b>{review.username}</b> {review.review}
-                    <Glyphicon glyph={'star'} /> {review.rating}
+                <b>{review.user}</b> {review.comment}
+                    <Glyphicon glyph={'star'} /> {review.rate}
                 </p>
             );
         }
@@ -40,13 +44,13 @@ class Movie extends Component {
             return (
                 <Panel>
                     <Panel.Heading>Movie Detail</Panel.Heading>
-                    <Panel.Body><Image className="image" src={currentMovie.imageUrl} thumbnail /></Panel.Body>
+                    <Panel.Body><Image className="image" src={currentMovie.ImageUrl} thumbnail /></Panel.Body>
                     <ListGroup>
                         <ListGroupItem>{currentMovie.title}</ListGroupItem>
-                        <ListGroupItem><ActorInfo actors={currentMovie.actors} /></ListGroupItem>
+                        <ListGroupItem><ActorInfo Actors={currentMovie.Actors} /></ListGroupItem>
                         <ListGroupItem><h4><Glyphicon glyph={'star'} /> {currentMovie.avgRating} </h4></ListGroupItem>
                     </ListGroup>
-                    <Panel.Body><ReviewInfo reviews={currentMovie.reviews} /></Panel.Body>
+                    <Panel.Body><ReviewInfo Reviews={currentMovie.Reviews} /></Panel.Body>
                 </Panel>
             );
         };
